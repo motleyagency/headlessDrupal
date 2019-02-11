@@ -1,0 +1,27 @@
+version: '3.3'
+
+services:
+  drupal:
+    depends_on:
+      - db
+    build:
+      context: .
+      dockerfile: Dockerfile-drupal
+    ports:
+      - 7025:80
+    volumes:
+      - ./drupal:/drupal
+
+  db:
+    image: mariadb:10.4.2
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: noroot
+      MYSQL_PASSWORD: 12345
+      MYSQL_ROOT_PASSWORD: '1'
+  
+volumes:
+  db_data:
