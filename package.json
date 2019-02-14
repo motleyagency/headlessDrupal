@@ -1,0 +1,25 @@
+{
+  "name": "headlessdrupal",
+  "version": "1.0.0",
+  "description": "Decoupled Drupal with latest tech stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-drupal": "docker-compose up -d --build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "react-scripts": "^2.1.5"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.0.0",
+    "apollo-cache-inmemory": "^1.4.2",
+    "apollo-client": "^2.4.12",
+    "apollo-link-http": "^1.5.11",
+    "express": "^4.16.4",
+    "react-apollo": "^2.4.1",
+    "react-router": "^4.3.1"
+  }
+}

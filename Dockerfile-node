@@ -1,0 +1,18 @@
+FROM node:10.15-alpine
+
+ENV WORKDIR=/home/node/app
+
+WORKDIR ${WORKDIR}
+
+COPY package.json ${WORKDIR}
+
+RUN npm install -g nodemon
+RUN npm install
+
+COPY . ${WORKDIR}
+
+COPY --chown=node:node . .
+
+EXPOSE 3000
+
+CMD [ "nodemon", "server/index.js" ]
