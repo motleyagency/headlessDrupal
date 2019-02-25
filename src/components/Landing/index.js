@@ -2,6 +2,8 @@ import React from 'react'
 import GridItem from '../GridItem'
 import Hero from '../Hero'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Main } from '../common'
 
 import Loader from '../common/Loader'
 
@@ -16,7 +18,8 @@ const LandingContent = ({ data }) => {
 
   console.log('data',data)
 
-  return (<main>
+  return (
+  <Main>
     {data && data.route && data.route.nodeContext && data.route.nodeContext.fieldDynamicContent.map(content => {
       console.log('[bundle]', content.entity.entityBundle)
       const { entity } = content
@@ -35,11 +38,16 @@ const LandingContent = ({ data }) => {
               key={entity.entityBundle}
             >
               {content.entity.fieldContentReference.map((content, i) =>
+              <Link to={{
+                pathname: content.entity.entityUrl.path,
+                state: {nid: content.entity.nid}
+                }}>
                 <GridItem
                   key={i}
                   title={content.entity.title}
                   image={content.entity.fieldImage}
                 />
+                </Link>
               )}
             </GridContainer>
           )
@@ -48,7 +56,8 @@ const LandingContent = ({ data }) => {
       }
     })}
 
-  </main>)
+  </Main>
+  )
 }
 
 export default LandingContent

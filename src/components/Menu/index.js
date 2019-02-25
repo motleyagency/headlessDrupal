@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import styled from 'styled-components'
 
 const NavBar = styled.nav`
@@ -10,7 +9,9 @@ const NavBar = styled.nav`
  }
 `
 const StyledLink = styled(Link)`
-  
+  text-decoration: none;
+  padding: 5px;
+  color: ${props => props.theme.darkBg};
 `
 
 const Menu = ({ data }) => {
@@ -20,7 +21,7 @@ const Menu = ({ data }) => {
       <ul>
         {data && data.menuByName && data.menuByName.links.map(link =>
           <li key={link.label}>
-            <Link to={link.url.path}>{link.label}</Link>
+            <StyledLink to={link.url.path}>{link.label}</StyledLink>
           </li>)}
       </ul>
     </NavBar>

@@ -1,5 +1,6 @@
 import Page from '../containers/Page'
 import Landing from '../containers/Landing'
+import Case from '../containers/Case'
 import NotFound from '../components/NotFound'
 
 const routes = [
@@ -13,6 +14,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: Page
+  },
+  {
+    path: '/cases/:title',
+    name: 'case',
+    component: Case
   },
   {
     path: '/cases',

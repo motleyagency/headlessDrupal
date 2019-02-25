@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Layout from './components/Layout';
-import App from './App';
+import App2 from './App2';
 import { hydrate } from 'react-dom'
 import { ApolloProvider } from 'react-apollo';
 import { BrowserRouter } from 'react-router-dom'
@@ -13,7 +13,7 @@ import { client } from './clients'
 hydrate(
 <ApolloProvider client={client}>
   <BrowserRouter>
-    <Layout />
+    <App2 />
   </BrowserRouter>
 </ApolloProvider>
 , document.getElementById('root'));
