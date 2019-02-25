@@ -1,0 +1,7 @@
+name: Headless GraphQL
+type: module
+description: 'GraphQL enhancements for headless functionality'
+core: 8.x
+package: 'GraphQL'
+dependencies:
+  - graphql_core
