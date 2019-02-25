@@ -4,22 +4,53 @@
   "description": "Decoupled Drupal with latest tech stack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-drupal": "docker-compose up -d --build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test-server": "nyc mocha --require @babel/polyfill --require @babel/register --require ignore-styles",
+    "eject": "react-scripts eject",
+    "start-drupal": "docker-compose up -d --build",
+    "dev": "npm run start | PORT=3000 nodemon --inspect ./server"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "react-scripts": "^2.1.5"
-  },
   "dependencies": {
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "apollo-cache-inmemory": "^1.4.3",
+    "apollo-client": "^2.4.13",
+    "apollo-link": "^1.2.8",
+    "apollo-link-error": "^1.1.7",
+    "apollo-link-http": "^1.5.11",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^16.8.2",
+    "react-apollo": "^2.4.1",
+    "react-dom": "^16.8.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "styled-components": "^4.1.3"
+  },
+  "devDependencies": {
     "@babel/polyfill": "^7.2.5",
     "@babel/register": "^7.0.0",
-    "apollo-cache-inmemory": "^1.4.2",
-    "apollo-client": "^2.4.12",
-    "apollo-link-http": "^1.5.11",
-    "express": "^4.16.4",
-    "react-apollo": "^2.4.1",
-    "react-router": "^4.3.1"
-  }
+    "babel-plugin-transform-assets": "^1.0.2",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "ignore-styles": "^5.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.0.0",
+    "nyc": "^13.3.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

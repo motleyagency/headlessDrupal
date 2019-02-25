@@ -5,3 +5,4 @@ Dockerfile-node
 .dockerignore
 .git
 .gitignore
+docker-compose*

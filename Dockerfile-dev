@@ -1,0 +1,27 @@
+FROM node:10.15-alpine
+
+ENV WORKDIR=/home/node/app
+
+ENV PORT=7010
+
+WORKDIR ${WORKDIR}
+
+RUN npm install -g nodemon
+
+
+# COPY package*.json ./
+RUN npm install
+
+COPY . ${WORKDIR}
+
+# COPY --chown=node:node . .
+
+# USER node
+
+# React dev server
+EXPOSE 7010
+EXPOSE 9229
+# Express server
+EXPOSE 3000
+
+CMD [ "npm", "run", "dev" ]

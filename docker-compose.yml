@@ -1,16 +1,35 @@
 version: '3.3'
 
 services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    # command: npm start
+    volumes:
+      - .:/home/node/app
+      - modules:/home/node/app/node_modules
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 7010:7010
+      - 7020:3000
+      - 7030:9229
+    networks:
+      - drunode
+
   drupal:
     depends_on:
       - db
     build:
       context: .
       dockerfile: Dockerfile-drupal
-    ports:
-      - 7025:80
     volumes:
       - ./drupal:/drupal
+    ports:
+      - 7025:80
+    networks:
+      - drunode
 
   db:
     image: mariadb:10.4.2
@@ -20,8 +39,14 @@ services:
     environment:
       MYSQL_DATABASE: drupal
       MYSQL_USER: noroot
-      MYSQL_PASSWORD: 12345
-      MYSQL_ROOT_PASSWORD: '1'
-  
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: supersecret
+    ports:
+      - 3350:3306
+
+networks:
+  drunode:
 volumes:
   db_data:
+  modules:
+ 

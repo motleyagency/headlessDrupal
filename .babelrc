@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ],
+  "plugins": [["transform-assets", {
+   "extensions": ["svg"],
+    "name": "/static/media/[name].[hash:8].[ext]"
+  }]]
+}
